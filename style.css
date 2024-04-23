@@ -61,3 +61,8 @@ nav > div.dropDown{
     background-color: rgb(218, 20, 92);
 }
 
+.progressTracker {
+    display: flex;
+    flex-direction: column;
+    
+}
