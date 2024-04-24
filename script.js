@@ -1,1 +1,24 @@
 // alert("JS is linked")
+// the console logs will only be present in the browser inspection console not in VS code!!!!!
+const tamagotchiName = prompt("Name your Tamagotchi :)")
+
+
+class TamagotchiAttributes {
+    constructor (name, age, hp, fitness, hunger, thirst, boredom, exhaustion) {
+        this.name = name;
+        this.age = age;
+        this.hp = hp;
+        this.fitness = fitness;
+        this.hunger = hunger;
+        this.thirst = thirst;
+        this.boredom = boredom;
+        this.exhaustion = exhaustion;
+    }
+}
+
+const user = new TamagotchiAttributes(tamagotchiName, 1, 10, 0, 0, 0, 0, 0); // instantiated class with variable user
+
+
+function buttonFunctionality () {
+    
+}
