@@ -104,6 +104,37 @@ nav > div.dropDown{
     height:100%;
     transition: width 3s;
 }
+.fitnessTracker{
+    background-color: red;
+    width: 0%;
+    height:100%;
+    transition: width 3s;
+}
+.hungerTracker{
+    background-color: red;
+    width: 0%;
+    height:100%;
+    transition: width 3s;
+}
+.thirstTracker{
+    background-color: red;
+    width: 0%;
+    height:100%;
+    transition: width 3s;
+}
+.boredomTracker{
+    background-color: red;
+    width: 0%;
+    height:100%;
+    transition: width 3s;
+}
+.exhaustionTracker{
+    background-color: red;
+    width: 0%;
+    height:100%;
+    transition: width 3s;
+}
+
 
 /* img{
     
@@ -116,6 +147,7 @@ nav > div.dropDown{
 }
 
 .luffyMoments{
+    margin: 10px;
     position: relative;
     width: 100vh;
     height: 100vh;
