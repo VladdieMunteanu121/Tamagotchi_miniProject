@@ -1,6 +1,7 @@
 // alert("JS is linked")
 // the console logs will only be present in the browser inspection console not in VS code!!!!!
-const tamagotchiName = prompt("Name your Tamagotchi :)")
+
+// const tamagotchiName = prompt("Name your Tamagotchi :)")
 
 
 class TamagotchiAttributes {
@@ -16,9 +17,17 @@ class TamagotchiAttributes {
     }
 }
 
-const user = new TamagotchiAttributes(tamagotchiName, 1, 10, 0, 0, 0, 0, 0); // instantiated class with variable user
+// const user = new TamagotchiAttributes(tamagotchiName, 1, 10, 0, 0, 0, 0, 0); // instantiated class with variable user
+const healthTracker=document.querySelector(".healthTracker")
+const meatButton= document.querySelector(".meat")
 
+meatButton.addEventListener("click", function() {
+    // Get the current width of the healthTracker
+    let currentWidth = parseFloat(getComputedStyle(healthTracker).width);
 
-function buttonFunctionality () {
+    // Increase the width by 10px
+    let newWidth = currentWidth - 10;
     
-}
+    // Update the width of the healthTracker
+    healthTracker.style.width = newWidth + "px";
+});
