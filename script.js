@@ -14,16 +14,7 @@ const eatButton = document.querySelector(".eat")
 const sleepButton = document.querySelector(".sleep")
 const playButton = document.querySelector(".play")
 let otherLuffyActivities = 0;
-let previousImageIndex = 0;
-// const dropDownOptions = document.querySelectorAll(".dropDownOptions")
-// const meatButton= document.querySelector(".meat")
-// const cakeButton= document.querySelector(".cake")
-// const waterButton= document.querySelector(".water")
-// const sakeButton= document.querySelector(".sake")
-// const runButton= document.querySelector(".run")
-// const danceButton= document.querySelector(".dance")
-// const fightButton= document.querySelector(".fight")
-// const sleepButton= document.querySelector(".sleep")
+
 
 //Tracking Bar Style Selectors
 
@@ -39,7 +30,7 @@ const hungerBarMaxWidth = 405;
 const boredomBarMaxWidth = 405;
 const sleepinessBarMaxWidth = 405;
 
-
+let characterExternal = 0;
 
 class TamagotchiAttributes {
     constructor (name) {
@@ -68,14 +59,16 @@ sleepinessUpdate(){
 }
 
  eatButton.addEventListener("click", function(){
+    characterExternal = 1;
     characterFunction("eat")
 
  })
  sleepButton.addEventListener("click", function(){
-
+    characterExternal = 1;
     characterFunction("sleep")
  })
  playButton.addEventListener("click", function(){
+    characterExternal = 1;
     characterFunction("play")
  })
 
@@ -85,8 +78,32 @@ let currentImageIndex = 0;
 
 
 setInterval(characterMetrics, 1000);
-setInterval(characterEvolution, 3000);
+// setInterval(characterEvolution, 3000);
 
+const ageCounter = document.getElementById("ageCounter")
+let age = 0;
+let newAge = 0;
+let intervalId; // Declare intervalId here
+
+setInterval (() => {
+    if (age < 80 && boredomBarWidth < boredomBarMaxWidth && hungerBarWidth < hungerBarMaxWidth && boredomBarWidth < boredomBarMaxWidth) {
+        age++;
+        ageCounter.textContent = `${age}`;
+        characterEvolution();
+    } else {
+        currentImageIndex = 8;
+        images.forEach((image, index) => {
+            if (index === currentImageIndex) {
+                image.style.display = 'none';
+                image.style.display = 'block';
+            } else {
+                image.style.display = 'none';
+            }
+        });
+        disableButtons();
+        clearInterval(intervalId);
+    }
+}, 1000);
 
 
 function characterMetrics () {
@@ -95,11 +112,11 @@ function characterMetrics () {
         hungerTracker.style.width = newHungerWidth + "px";
     }
     if(boredomBarWidth < boredomBarMaxWidth){
-    newBoredomWidth = boredomBarWidth + 2;
+    newBoredomWidth = boredomBarWidth + 10;
     boredomTracker.style.width = newBoredomWidth + "px";
     }
     if(sleepinessBarWidth < sleepinessBarMaxWidth){
-    newSleepinessWidth = sleepinessBarWidth + 1;
+    newSleepinessWidth = sleepinessBarWidth + 10;
     sleepinessTracker.style.width = newSleepinessWidth + "px";
     }
     hungerBarWidth = newHungerWidth;
@@ -107,64 +124,77 @@ function characterMetrics () {
     sleepinessBarWidth = newSleepinessWidth
 }
 function characterEvolution () {
-    if(currentImageIndex !== 4 && currentImageIndex !== 5 && currentImageIndex !== 6 && currentImageIndex !== 7 && currentImageIndex !== 8 && !otherLuffyActivities){
+    if (age >= 5 && age % 15 === 0 && currentImageIndex < 4) {
         images[currentImageIndex].style.display = 'none';
-      
-        // Move to the next image, or loop back to the first image
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-      
-        // Show the next image
+        currentImageIndex++;
         images[currentImageIndex].style.display = 'block';
+        console.log(currentImageIndex);
     }
-    document.body.style.backgroundImage='url("https://media.giphy.com/media/l378aUIDVRapQXXfG/giphy.gif?cid=ecf05e47xmji6b0k9spm6mfvt7dmhe19r4wyjtkoemnh6tpw&ep=v1_gifs_search&rid=giphy.gif&ct=g")'
+    enableButtons();
+    
 };
 
-function characterFunction (action) {
-    //getComputedStyle allows you to get the css property values of a desired element! very useful for animations
-    
-    previousImageIndex = currentImageIndex;
-    otherLuffyActivities = 1;
-    console.log(previousImageIndex);
-if(action=== "eat"){
-    currentImageIndex = 5;
-    newHungerWidth = hungerBarWidth - 10;
-    newBoredomWidth = boredomBarWidth - 3;
-} 
-if (action === "sleep"){
-    document.body.style.backgroundImage='url("https://media.giphy.com/media/BHNfhgU63qrks/giphy.gif?cid=790b7611ahdxp0h2rh8ji1lql6joqlj87px0sh63ogur2i0e&ep=v1_gifs_search&rid=giphy.gif&ct=g")'
-    currentImageIndex = 6;
-    newSleepinessWidth = sleepinessBarWidth - 15;
-    newBoredomWidth = boredomBarWidth - 15;
-}
-if(action === "play"){
-    currentImageIndex = 7;
-    newBoredomWidth = boredomBarWidth - 10;
-    newHungerWidth = hungerBarWidth + 12;
+function characterFunction(action) {
+    eatButton.disabled = true;
+    sleepButton.disabled = true;
+    playButton.disabled = true;
 
-}
-  
+    let previousImageIndex = currentImageIndex;
+    otherLuffyActivities = 1;
+
+    if (action === "eat") {
+        currentImageIndex = 5;
+        newHungerWidth = hungerBarWidth - 20;
+        newBoredomWidth = boredomBarWidth - 5;
+    } 
+    if (action === "sleep") {
+        document.body.style.backgroundImage='url("https://media.giphy.com/media/BHNfhgU63qrks/giphy.gif?cid=790b7611ahdxp0h2rh8ji1lql6joqlj87px0sh63ogur2i0e&ep=v1_gifs_search&rid=giphy.gif&ct=g")'
+        currentImageIndex = 6;
+        newSleepinessWidth = sleepinessBarWidth - 15;
+        newBoredomWidth = boredomBarWidth - 15;
+    }
+    if (action === "play") {
+        currentImageIndex = 7;
+        newBoredomWidth = boredomBarWidth - 20;
+        newHungerWidth = hungerBarWidth + 15;
+    }
+
     hungerTracker.style.width = newHungerWidth + "px";
     boredomTracker.style.width = newBoredomWidth + "px";
     sleepinessTracker.style.width = newSleepinessWidth + "px";
-    
+
     hungerBarWidth = newHungerWidth;
     boredomBarWidth = newBoredomWidth;
-    sleepinessBarWidth = newSleepinessWidth
-    
-    setTimeout(() => {
-        currentImageIndex = previousImageIndex;
-        otherLuffyActivities = 0;
-        
-    }, 1000);
+    sleepinessBarWidth = newSleepinessWidth;
+
+
+setTimeout(() => {
+    currentImageIndex = previousImageIndex;
+    images[currentImageIndex].style.display = 'none';
+    images[currentImageIndex].style.display = 'block';
+    document.body.style.backgroundImage='url("https://media.giphy.com/media/l378aUIDVRapQXXfG/giphy.gif?cid=ecf05e47xmji6b0k9spm6mfvt7dmhe19r4wyjtkoemnh6tpw&ep=v1_gifs_search&rid=giphy.gif&ct=g")'
+    characterExternal = 0;
+}, 1000)
 
     images.forEach((image, index) => {
         if (index === currentImageIndex) {
+            image.style.display = 'none';
             image.style.display = 'block';
         } else {
             image.style.display = 'none';
         }
     });
-    
+}
+
+function disableButtons() {
+    eatButton.disabled = true;
+    sleepButton.disabled = true;
+    playButton.disabled = true;
+}
+function enableButtons(){
+    eatButton.disabled = false;
+    sleepButton.disabled = false;
+    playButton.disabled = false;
 }
 
 
