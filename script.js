@@ -2,80 +2,85 @@
 // the console logs will only be present in the browser inspection console not in VS code!!!!!
 
 // const tamagotchiName = prompt("Name your Tamagotchi :)")
+// const nameUpdate = document.querySelector("h1");
+// nameUpdate.innerHTML= `${tamagotchiName}'s Evolution`;
+
+const hungerTracker = document.querySelector(".hungerTracker")
+const boredomTracker = document.querySelector(".boredomTracker")
+const sleepinessTracker = document.querySelector(".sleepinessTracker")
 
 
-let fitnessBarWidth;
-let hungerBarWidth;
-let thirstBarWidth;
-let boredomBarWidth;
-let exhaustionBarWidth;
+const eatButton = document.querySelector(".eat")
+const sleepButton = document.querySelector(".sleep")
+const playButton = document.querySelector(".play")
+
+
+// const dropDownOptions = document.querySelectorAll(".dropDownOptions")
+// const meatButton= document.querySelector(".meat")
+// const cakeButton= document.querySelector(".cake")
+// const waterButton= document.querySelector(".water")
+// const sakeButton= document.querySelector(".sake")
+// const runButton= document.querySelector(".run")
+// const danceButton= document.querySelector(".dance")
+// const fightButton= document.querySelector(".fight")
+// const sleepButton= document.querySelector(".sleep")
+
+//Tracking Bar Style Selectors
+
+let newHungerWidth = 0.0;
+let newBoredomWidth = 0.0;
+let newSleepinessWidth = 0.0;
+
+
+
 
 class TamagotchiAttributes {
-    constructor (name, age, hp, fitness, hunger, thirst, boredom, exhaustion) {
+    constructor (name) {
         this.name = name;
-        this.age = age;
-        this.hp = hp;
-        this.fitness = fitness;
-        this.hunger = hunger;
-        this.thirst = thirst;
-        this.boredom = boredom;
-        this.exhaustion = exhaustion;
+        this.age = 0;
+        this.hp = 10;
+        this.fitness = 0;
+        this.hunger = 0;
+        this.thirst = 0;
+        this.boredom = 0;
+        this.exhaustion = 0;
     }
+
+ageUpdate(){
+    this.age++
 }
 
-// const user = new TamagotchiAttributes(tamagotchiName, 1, 10, 0, 0, 0, 0, 0); // instantiated class with variable user
-const healthTracker= document.querySelector(".healthTracker")
-const fitnessTracker = document.querySelector(".fitnessTracker")
-const hungerTracker = document.querySelector(".hungerTracker")
-const thirstTracker = document.querySelector(".thirstTracker")
-const boredomTracker = document.querySelector(".boredomTracker")
-const exhaustionTracker = document.querySelector(".exhaustionTracker")
-const dropDownOptions = document.querySelectorAll(".dropDownOptions")
+hungerUpdate(){
 
-const meatButton= document.querySelector(".meat")
-const cakeButton= document.querySelector(".cake")
-const waterButton= document.querySelector(".water")
-const sakeButton= document.querySelector(".sake")
-const runButton= document.querySelector(".run")
-const danceButton= document.querySelector(".dance")
-const fightButton= document.querySelector(".fight")
-const sleepButton= document.querySelector(".sleep")
+}
 
-// the section below is not dry at all.... needs to be revised
+boredomUpdate(){
 
-meatButton.addEventListener("click", function(){
-    characterNutrition("meat")
-});
-cakeButton.addEventListener("click", function(){
-    characterNutrition("cake")
-});
-waterButton.addEventListener("click", function(){
-    characterNutrition("water")
-});
-sakeButton.addEventListener("click", function(){
-    characterNutrition("sake")
-});
-runButton.addEventListener("click", function(){
-    characterActivity("run")
-});
+}
+sleepinessUpdate(){
 
-danceButton.addEventListener("click", function(){
-    characterActivity("dance")
-});
-fightButton.addEventListener("click", function(){
-    characterActivity("fight")
-});
-sleepButton.addEventListener("click", function(){
-    characterActivity("sleep")
-});
+}
+}
+
+ eatButton.addEventListener("click", function(){
+    characterFunction("eat")
+
+ })
+ sleepButton.addEventListener("click", function(){
+    characterFunction("sleep")
+ })
+ playButton.addEventListener("click", function(){
+    characterFunction("play")
+ })
+
 
 
 let images = document.querySelectorAll('.luffyMoments img');
 let currentImageIndex = 0;
 
-setInterval(characterEvolution, 1000);
+// setInterval(characterEvolution, 5000);
 
-function characterEvolution () {
+setInterval (() => {
     if(currentImageIndex !== 4){
         images[currentImageIndex].style.display = 'none';
       
@@ -84,26 +89,43 @@ function characterEvolution () {
       
         // Show the next image
         images[currentImageIndex].style.display = 'block';
-      }
+    }
+}, 1000);
+
+function characterFunction (action) {
+    //getComputedStyle allows you to get the css property values of a desired element! very useful for animations
+    let hungerBarWidth = parseFloat(getComputedStyle(hungerTracker).width)
+    let boredomBarWidth = parseFloat(getComputedStyle(boredomTracker).width)
+    let sleepinessBarWidth = parseFloat(getComputedStyle(sleepinessTracker).width)
+
+if(action=== "eat"){
+    currentImageIndex = 5;
+    newHungerWidth = hungerBarWidth - 10;
+    newBoredomWidth = boredomBarWidth - 3;
+} 
+if (action === "sleep"){
+    currentImageIndex = 6;
+    newHungerWidth = hungerBarWidth - 8;
+    newBoredomWidth = boredomBarWidth - 15;
+}
+if(action === "play"){
+    currentImageIndex = 7;
+    newBoredomWidth = boredomBarWidth - 10;
+    newHungerWidth = hungerBarWidth + 12;
+
+}
+  
+    hungerTracker.style.width = newHungerWidth + "px";
+    boredomTracker.style.width = newBoredomWidth + "px";
+    sleepinessTracker.style.width = newSleepinessWidth + "px";
+
+    images.forEach((image, index) => {
+        if (index === currentImageIndex) {
+            image.style.display = 'block';
+        } else {
+            image.style.display = 'none';
+        }
+    });
 }
 
-function characterNutrition (foodItem) {
-    //getComputedStyle allows you to get the css property values of a desired element! very useful for animations
-if(foodItem === "meat"){
-    healthBarWidth = parseFloat(getComputedStyle(healthTracker).width);
-    let newWidth = healthBarWidth - 10;
-    
-    // Update the width of the healthTracker
-    healthTracker.style.width = newWidth + "px";
-}
-    return healthTracker.style.width;
-}
-function characterActivity () {
-    //getComputedStyle allows you to get the css property values of a desired element! very useful for animations
-    healthBarWidth = parseFloat(getComputedStyle(healthTracker).width);
 
-    let newWidth = healthBarWidth - 10;
-    
-    // Update the width of the healthTracker
-    healthTracker.style.width = newWidth + "px";
-}

@@ -9,9 +9,12 @@
 </head>
 <body>
     <header>
-        <h1>Tamagotchi Evolution</h1>
+        <h1></h1>
         <nav>
-            <div class="dropDown">
+            <button class="sleep">Sleep</button>
+            <button class="eat">Eat</button>
+            <button class="play">Play</button>
+            <!-- <div class="dropDown">
                 <button class="menuItems">Menu</button>
                 <div class="dropDownOptions">
                     <button class="meat">Meat</button>
@@ -29,75 +32,53 @@
                     <button class="fight">Fight</button>
                     <button class="sleep">Sleep</button>
                 </div>
-            </div>
+            </div> -->
         </nav>
     </header>
-<div class="center">
-<div class="globalTrackerContainer">
-    <div class="trackerFunctionalityContainer">
-        <h4>Health:</h4>
-        <div class="trackerFormatContainer">
-            <div class="healthTracker"></div>
-        </div>
-    </div>
-    <div class="trackerFunctionalityContainer">
-        <h4>Fitness:</h4>
-        <div class="trackerFormatContainer">
-            <div class="fitnessTracker"></div>
-        </div>
-    </div>
-    <div class="trackerFunctionalityContainer">
-        <h4>Hunger:</h4>
-        <div class="trackerFormatContainer">
-            <div class="hungerTracker"></div>
-        </div>
-    </div>
-    <div class="trackerFunctionalityContainer">
-        <h4>Thirst:</h4>
-        <div class="trackerFormatContainer">
-            <div class="thirstTracker"></div>
-        </div>
-    </div>
-    <div class="trackerFunctionalityContainer">
-        <h4>Boredom:</h4>
-        <div class="trackerFormatContainer">
-            <div class="boredomTracker"></div>
-        </div>
-    </div>
-    <div class="trackerFunctionalityContainer">
-        <h4>Exhaustion:</h4>
-        <div class="trackerFormatContainer">
-            <div class="exhaustionTracker"></div>
-        </div>
-    </div>
-</div>
-</div>
+
 
 <!-- <img src="" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
      -->
      <!-- <div style="width:100%;height:0;padding-bottom:75%;position:relative;"><iframe src="https://giphy.com/embed/WzsKQ8buhPPrO" width="30%" height="35%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div> -->
 <div class="center">
     <div class="luffyMoments">
-        <div class="gen1">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWp6ZWgyM2RzeWE3ZWZiczA3eHUycDg1ZGVxcnl1bnVveTZoZTE4diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wzWxTUiXRQDYc/giphy.gif" alt="youngLuffy">
-        </div>
-        <div class="gen2">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDJiMGpmN3BsYnB1OThrd3Y2M2ZrbXFwcHVlbndkZmQyNDl2Z2VnciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/tuCFp8rod0x3O/giphy.gif" alt="gearTwo">
-        </div>
-        <div class="gen3">
-            <img src="https://media.giphy.com/media/TTRnvIFE4wYLK/giphy.gif?cid=790b7611gpm901pzdq2mfh4yr395ttrfm42lpfvfgchovv06&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="gearThreeLuffy">
-        </div>
-        <div class="gen4">
-            <img src="https://media.giphy.com/media/xLzOrO1e19V3q/giphy.gif?cid=ecf05e47tcyw3dv8assp5bubweb0mq2djrj7neblyv6p217z&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="gearFourLuffy">
-        </div>
-        <div class="gen5">
-            <img src="https://media.giphy.com/media/WmkEhAIyWfpm1vdVcg/giphy.gif?cid=ecf05e47i11x7jmforbgvnj66h0qwh8cc8oxfzp4a69ci5sg&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="sunGodLuffy">
-        </div>
-        <div class="eating">
-            <img src="https://media.giphy.com/media/iixdMr6cSURW/giphy.gif?cid=ecf05e47i11x7jmforbgvnj66h0qwh8cc8oxfzp4a69ci5sg&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="eatingLuffy">
-        </div>
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWp6ZWgyM2RzeWE3ZWZiczA3eHUycDg1ZGVxcnl1bnVveTZoZTE4diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wzWxTUiXRQDYc/giphy.gif" alt="youngLuffy" id="gen1">
+
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDJiMGpmN3BsYnB1OThrd3Y2M2ZrbXFwcHVlbndkZmQyNDl2Z2VnciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/tuCFp8rod0x3O/giphy.gif" alt="gearTwo" id="gen2">
+
+            <img src="https://media.giphy.com/media/TTRnvIFE4wYLK/giphy.gif?cid=790b7611gpm901pzdq2mfh4yr395ttrfm42lpfvfgchovv06&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="gearThreeLuffy"  id="gen3">
+
+            <img src="https://media.giphy.com/media/xLzOrO1e19V3q/giphy.gif?cid=ecf05e47tcyw3dv8assp5bubweb0mq2djrj7neblyv6p217z&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="gearFourLuffy" id="gen4">
+            <img src="https://media.giphy.com/media/WmkEhAIyWfpm1vdVcg/giphy.gif?cid=ecf05e47i11x7jmforbgvnj66h0qwh8cc8oxfzp4a69ci5sg&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="sunGodLuffy" id="gen5">
+            <img src="https://media.giphy.com/media/iixdMr6cSURW/giphy.gif?cid=ecf05e47i11x7jmforbgvnj66h0qwh8cc8oxfzp4a69ci5sg&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="eatingLuffy" id="eating">
+            <img src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/03/luffy-sleep.jpg" alt="sleepingLuffy" id="sleeping">
+            <img src="https://media.giphy.com/media/SJXzadwbexJEAZ9S1B/giphy.gif?cid=ecf05e471gpcog4qmgk4fgv7lwretweuu9cxt7orietjws5a&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="palyLuffy" id="play">
     </div>
 </div>
+
+<div class="center">
+    <div class="globalTrackerContainer">
+    
+        <div class="trackerFunctionalityContainer">
+            <h4>Hunger:</h4>
+            <div class="trackerFormatContainer">
+                <div class="hungerTracker"></div>
+            </div>
+        </div>
+        <div class="trackerFunctionalityContainer">
+            <h4>Boredom:</h4>
+            <div class="trackerFormatContainer">
+                <div class="boredomTracker"></div>
+            </div>
+        </div>
+        <div class="trackerFunctionalityContainer">
+            <h4>Sleepiness:</h4>
+            <div class="trackerFormatContainer">
+                <div class="sleepinessTracker"></div>
+            </div>
+        </div>
+    </div>
+    </div>
 
 </body>
 </html>
