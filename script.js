@@ -1,9 +1,9 @@
 // alert("JS is linked")
 // the console logs will only be present in the browser inspection console not in VS code!!!!!
 
-// const tamagotchiName = prompt("Name your Tamagotchi :)")
-// const nameUpdate = document.querySelector("h1");
-// nameUpdate.innerHTML= `${tamagotchiName}'s Evolution`;
+const tamagotchiName = prompt("Name your Tamagotchi :)")
+const nameUpdate = document.querySelector("h1");
+nameUpdate.innerHTML= `${tamagotchiName}'s Evolution`;
 
 const hungerTracker = document.querySelector(".hungerTracker")
 const boredomTracker = document.querySelector(".boredomTracker")
@@ -108,15 +108,15 @@ setInterval (() => {
 
 function characterMetrics () {
     if(hungerBarWidth < hungerBarMaxWidth){
-        newHungerWidth = hungerBarWidth + 5;
+        newHungerWidth = Math.min(hungerBarWidth + 5, hungerBarMaxWidth);
         hungerTracker.style.width = newHungerWidth + "px";
     }
     if(boredomBarWidth < boredomBarMaxWidth){
-    newBoredomWidth = boredomBarWidth + 10;
+    newBoredomWidth = Math.min(boredomBarWidth + 10, boredomBarMaxWidth);
     boredomTracker.style.width = newBoredomWidth + "px";
     }
     if(sleepinessBarWidth < sleepinessBarMaxWidth){
-    newSleepinessWidth = sleepinessBarWidth + 10;
+    newSleepinessWidth = Math.min(sleepinessBarWidth + 10),sleepinessBarMaxWidth;
     sleepinessTracker.style.width = newSleepinessWidth + "px";
     }
     hungerBarWidth = newHungerWidth;
