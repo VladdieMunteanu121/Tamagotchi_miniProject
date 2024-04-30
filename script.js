@@ -144,19 +144,19 @@ function characterFunction(action) {
 
     if (action === "eat") {
         currentImageIndex = 5;
-        newHungerWidth = hungerBarWidth - 20;
-        newBoredomWidth = boredomBarWidth - 5;
+        newHungerWidth = hungerBarWidth - 30;
+        newBoredomWidth = boredomBarWidth - 10;
     } 
     if (action === "sleep") {
         document.body.style.backgroundImage='url("https://media.giphy.com/media/BHNfhgU63qrks/giphy.gif?cid=790b7611ahdxp0h2rh8ji1lql6joqlj87px0sh63ogur2i0e&ep=v1_gifs_search&rid=giphy.gif&ct=g")'
         currentImageIndex = 6;
-        newSleepinessWidth = sleepinessBarWidth - 15;
-        newBoredomWidth = boredomBarWidth - 15;
+        newSleepinessWidth = sleepinessBarWidth - 35;
+        newBoredomWidth = boredomBarWidth - 20;
     }
     if (action === "play") {
         currentImageIndex = 7;
-        newBoredomWidth = boredomBarWidth - 20;
-        newHungerWidth = hungerBarWidth + 15;
+        newBoredomWidth = boredomBarWidth - 30;
+        newHungerWidth = hungerBarWidth + 7;
     }
 
     hungerTracker.style.width = newHungerWidth + "px";
